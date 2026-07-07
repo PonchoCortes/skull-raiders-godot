@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/pirata_bueno_idle.fbx" id="1"]
+[ext_resource type="Script" path="res://scripts/AutoPlayAnimation.gd" id="2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_deck"]
+size = Vector3(4, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="Mat_deck"]
+albedo_color = Color(0.45, 0.32, 0.18, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deck"]
+size = Vector3(4, 0.3, 3)
+
+[node name="PiratePreview3D" type="Node3D"]
+
+[node name="Deck" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.15, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Deck"]
+mesh = SubResource("BoxMesh_deck")
+surface_material_override/0 = SubResource("Mat_deck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Deck"]
+shape = SubResource("BoxShape3D_deck")
+
+[node name="PirataBueno" parent="." instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95, 0.3, 0, -0.3, 0.95, 0, 1.6, 4.2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.433, 0.25, 0, 0.5, 0.866, -0.5, -0.75, 0.433, 0, 3, 0)
+shadow_enabled = true
