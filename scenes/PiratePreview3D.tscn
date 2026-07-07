@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="PackedScene" path="res://assets/models/pirata_bueno_idle.fbx" id="1"]
 [ext_resource type="Script" path="res://scripts/AutoPlayAnimation.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/PiratePreviewFit.gd" id="3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_deck"]
 size = Vector3(4, 0.3, 3)
@@ -13,6 +14,7 @@ albedo_color = Color(0.45, 0.32, 0.18, 1)
 size = Vector3(4, 0.3, 3)
 
 [node name="PiratePreview3D" type="Node3D"]
+script = ExtResource("3")
 
 [node name="Deck" type="StaticBody3D" parent="."]
 position = Vector3(0, -0.15, 0)
